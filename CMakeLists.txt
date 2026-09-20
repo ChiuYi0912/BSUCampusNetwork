@@ -8,6 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(
     BSUCampusNetworkClient
     src/BSUCampusNetworkClient.cpp
+    src/Network/Wifi.cpp
+    src/Network/Http.cpp
+    src/Crypto/Md5.cpp
+    src/Crypto/Sha1.cpp
+    src/SRun/SRun.cpp
+    src/Utils/Url.cpp
 )
 
 add_executable(
@@ -24,4 +30,12 @@ target_link_libraries(
     BSUCampusNetworkClient
     wlanapi
     wininet
+    winhttp
+    bcrypt
+    iphlpapi
+    ws2_32
 )
+
+target_compile_options(BSUCampusNetworkClient PRIVATE /utf-8)
+target_compile_options(BSUCampusNetworkInstaller PRIVATE /utf-8)
+target_compile_options(BSUCampusNetworkUninstaller PRIVATE /utf-8)

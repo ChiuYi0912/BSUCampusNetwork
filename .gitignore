@@ -169,6 +169,7 @@ logs/
 
 config.local.*
 *.local
+config.json
 
 # ================================
 
