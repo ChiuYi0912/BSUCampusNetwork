@@ -44,6 +44,15 @@ cmake --build build --config Release
 
 ## 使用
 
+### 在项目根目录创建 "config.json",用于网络认证
+
+```
+{
+    "username": "你的用户名",
+    "password": "密码"
+}
+```
+
 ### 启动客户端
 
 ```powershell
