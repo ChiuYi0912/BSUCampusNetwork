@@ -5,6 +5,7 @@
 #include "../Crypto/Md5.h"
 #include "../Crypto/Sha1.h"
 #include "../Utils/Url.h"
+#include "../Utils/Config.h"
 
 #include <iostream>
 #include <string>
@@ -328,13 +329,22 @@ bool LoginCampusNetwork()
     const std::wstring host =
         L"219.242.208.131";
 
-    //校园网信息
+    // 校园网信息
+    Config config = ReadConfig();
+
+    if (config.username.empty() || config.password.empty())
+    {
+        std::cout
+            << "config.json not found or missing username/password\n";
+
+        return false;
+    }
 
     const std::string username =
-        "";
+        config.username;
 
     const std::string password =
-        "";
+        config.password;
 
     std::string ip = GetWifiIPv4();
 

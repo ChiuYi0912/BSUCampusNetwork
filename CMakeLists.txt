@@ -14,6 +14,7 @@ add_executable(
     src/Crypto/Sha1.cpp
     src/SRun/SRun.cpp
     src/Utils/Url.cpp
+    src/Utils/Config.cpp
 )
 
 add_executable(
