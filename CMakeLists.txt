@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(BSUCampusNetwork)
+project(BSUCampusNetwork LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(
     BSUCampusNetworkClient
@@ -27,8 +28,27 @@ add_executable(
     src/BSUCampusNetworkUninstaller.cpp
 )
 
+target_compile_options(
+    BSUCampusNetworkClient
+    PRIVATE
+    /utf-8
+)
+
+target_compile_options(
+    BSUCampusNetworkInstaller
+    PRIVATE
+    /utf-8
+)
+
+target_compile_options(
+    BSUCampusNetworkUninstaller
+    PRIVATE
+    /utf-8
+)
+
 target_link_libraries(
     BSUCampusNetworkClient
+    PRIVATE
     wlanapi
     wininet
     winhttp
@@ -36,7 +56,3 @@ target_link_libraries(
     iphlpapi
     ws2_32
 )
-
-target_compile_options(BSUCampusNetworkClient PRIVATE /utf-8)
-target_compile_options(BSUCampusNetworkInstaller PRIVATE /utf-8)
-target_compile_options(BSUCampusNetworkUninstaller PRIVATE /utf-8)

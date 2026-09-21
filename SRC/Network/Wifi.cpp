@@ -16,25 +16,22 @@
 #pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "Wlanapi.lib")
 
-namespace
+struct WsaInit
 {
-    struct WsaInit
+    bool ok = false;
+    WsaInit()
     {
-        bool ok = false;
-        WsaInit()
+        WSADATA wsaData;
+        ok = (WSAStartup(MAKEWORD(2, 2), &wsaData) == 0);
+    }
+    ~WsaInit()
+    {
+        if (ok)
         {
-            WSADATA wsaData;
-            ok = (WSAStartup(MAKEWORD(2, 2), &wsaData) == 0);
+            WSACleanup();
         }
-        ~WsaInit()
-        {
-            if (ok)
-            {
-                WSACleanup();
-            }
-        }
-    };
-}
+    }
+};
 
 // 获取当前连接的 WiFi
 std::string GetCurrentWifi()
